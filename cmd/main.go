@@ -25,4 +25,6 @@ func main() {
 	fmt.Println(handler.RProvince())
 	// 随机 城市
 	fmt.Println(handler.RCity())
+	// 随机 UserAgent
+	fmt.Println(handler.RUserAgent())
 }

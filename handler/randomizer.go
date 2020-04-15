@@ -54,3 +54,7 @@ func RProvince() string {
 func RCity() string {
 	return city[randomSeed.Intn(len(city))]
 }
+
+func RUserAgent() string {
+	return userAgent[randomSeed.Intn(len(userAgent))]
+}

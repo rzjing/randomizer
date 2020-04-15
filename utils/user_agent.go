@@ -8,10 +8,12 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
 	"github.com/PuerkitoBio/goquery"
+	"io/ioutil"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 )
 
@@ -40,15 +42,21 @@ func GetUserAgent(browser string) (UA []string) {
 }
 
 func main() {
+	if len(os.Args) <= 1 {
+		log.Fatalln("请指定输出路径, .json")
+	}
+
 	var UA = make(map[string][]string)
 
 	for _, b := range []string{"Chrome", "Firefox", "Internet+Explorer", "Opera", "Safari", "Edge", "Android+Webkit+Browser"} {
 		UA[b] = GetUserAgent(b)
 	}
 
-	for browser, ua := range UA {
-		for _, item := range ua {
-			fmt.Println(browser, item)
+	if buffer, err := json.Marshal(UA); err != nil {
+		log.Println(err.Error())
+	} else {
+		if err := ioutil.WriteFile(os.Args[1], buffer, 0644); err != nil {
+			log.Fatalln(err.Error())
 		}
 	}
 }

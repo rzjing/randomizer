@@ -10,6 +10,7 @@
 * 随机 IPv4 地址
 * 随机省份
 * 随机城市
+* 随机 UserAgent
 
 ## 示例
 
@@ -37,4 +38,8 @@ fmt.Println(handler.RProvince())
 // 随机 城市
 fmt.Println(handler.RCity())
 上饶市
+
+// 随机 UserAgent
+fmt.Println(handler.RUserAgent())
+Mozilla/5.0 (X11; U; Linux i686; en-US) AppleWebKit/531.4 (KHTML, like Gecko) Chrome/3.0.194.0 Safari/531.4
 ```
